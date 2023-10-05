@@ -29,7 +29,7 @@ public void establecerSalarioBase(double salario) {
     // calcula los ingresos
     @Override
     public double ingresos() {
-        return obtenerSalarioBase() + (obtenerVentasBrutas() * obtenerTarifaComision());
+        return (obtenerSalarioBase() + (obtenerVentasBrutas() * obtenerTarifaComision())) * ingresosComplementos();
     }
 
     // devuelve representación String de un objeto EmpleadoBaseComision

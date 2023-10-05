@@ -45,9 +45,9 @@ public class EmpleadoPorHoras extends Empleado {
     @Override
     public double ingresos() {
         if (horas <= 40) {
-            return obtenerHoras() * obtenerSueldo();
+            return (obtenerHoras() * obtenerSueldo()) * ingresosComplementos();
         }
-        return 40 * obtenerSueldo() + (obtenerHoras() - 40) * obtenerSueldo() * 1.5;
+        return (40 * obtenerSueldo() + (obtenerHoras() - 40) * obtenerSueldo() * 1.5) * ingresosComplementos();
     }
 
     // devuelve representación String de un objeto EmpleadoAsalariado

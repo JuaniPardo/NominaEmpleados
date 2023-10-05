@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class TestNomina {
     public static void main(String[] args) {
         double montoTotal = 0;
-        EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("Juan", "Perez", LocalDate.of(1985,5,15), "111-11-1111", 800.00);
+        EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("Juan", "Perez", LocalDate.of(1985,5,15), "111-11-1111", 800.00, LocalDate.of(2010, 1, 1));
         EmpleadoPorHoras empleadoPorHoras = new EmpleadoPorHoras("Jorge", "Gonzalez", LocalDate.of(1990,3,20), "222-22-2222", 16, 40);
         EmpleadoPorComision empleadoPorComision = new EmpleadoPorComision("Ana", "Lopez", LocalDate.of(1995,7,30), "333-33-3333", 10000, .06);
         EmpleadoBaseComision empleadoBaseComision = new EmpleadoBaseComision("Luis", "Garcia", LocalDate.of(2000,2,2), "444-44-4444", 5000, .04, 300);
@@ -19,6 +19,10 @@ public class TestNomina {
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorComision, "Ingresos", empleadoPorComision.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoBaseComision, "Ingresos", empleadoBaseComision.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorPiezas, "Ingresos", empleadoPorPiezas.ingresos());
+
+        empleadoPorPiezas.agregarComplemento(new ComplementoNocturnidad());
+        empleadoPorHoras.agregarComplemento(new ComplementoProductividad());
+        empleadoBaseComision.agregarComplemento(new ComplementoInsalubridad());
 
         // crea un arrayList Empleado
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();

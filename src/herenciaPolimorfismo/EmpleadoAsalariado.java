@@ -7,7 +7,7 @@ public class EmpleadoAsalariado extends Empleado {
     private double salarioSemanal;
 
     // constructor
-    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario) {
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario, LocalDate localDate) {
         super(nombre, apellido, fecNac, nss);
         establecerSalarioSemanal(salario);
     }
@@ -29,7 +29,7 @@ public class EmpleadoAsalariado extends Empleado {
     // calcula los ingresos
     @Override
     public double ingresos() {
-        return obtenerSalarioSemanal();
+        return obtenerSalarioSemanal() * ingresosComplementos();
     }
 
     // devuelve representación String de un objeto EmpleadoAsalariado

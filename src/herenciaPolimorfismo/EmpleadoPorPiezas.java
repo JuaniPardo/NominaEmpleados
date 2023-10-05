@@ -45,7 +45,7 @@ public class EmpleadoPorPiezas extends Empleado{
     // calcula los ingresos
     @Override
     public double ingresos(){
-        return obtenerPagoPorPieza() * obtenerPiezas();
+        return (obtenerPagoPorPieza() * obtenerPiezas()) * ingresosComplementos();
     }
 
     // devuelve representación String de un objeto EmpleadoPorPiezas

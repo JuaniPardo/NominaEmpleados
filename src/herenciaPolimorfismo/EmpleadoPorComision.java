@@ -15,13 +15,12 @@ public class EmpleadoPorComision extends Empleado{
     }
 
     // establece la tarifa de comisión
-    public  double establecerTarifaComision(double tarifa) {
+    public  void establecerTarifaComision(double tarifa) {
         if (tarifa > 0.0 && tarifa < 1.0) {
             tarifaComision = tarifa;
         } else {
             throw new IllegalArgumentException("La tarifa de comisión debe ser > 0.0 y < 1.0");
         }
-        return tarifaComision;
     }
 
     // devuelve la tarifa de comisión
@@ -46,7 +45,7 @@ public class EmpleadoPorComision extends Empleado{
     // calcula los ingresos
     @Override
     public double ingresos() {
-        return obtenerVentasBrutas() * obtenerTarifaComision();
+        return (obtenerVentasBrutas() * obtenerTarifaComision()) * ingresosComplementos();
     }
 
     // devuelve representación String de un objeto EmpleadoPorComision
