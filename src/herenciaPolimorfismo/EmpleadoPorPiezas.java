@@ -8,8 +8,8 @@ public class EmpleadoPorPiezas extends Empleado{
     private double pagoPorPieza;
 
     // constructor
-    public EmpleadoPorPiezas(String nombre, String apellido, LocalDate fecNac, String nss, int piezas, double pagoPorPieza){
-        super(nombre, apellido, fecNac, nss);
+    public EmpleadoPorPiezas(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, int piezas, double pagoPorPieza){
+        super(nombre, apellido, fecNac, nss, categoria);
         establecerPiezas(piezas);
         establecerPagoPorPieza(pagoPorPieza);
     }
@@ -51,8 +51,7 @@ public class EmpleadoPorPiezas extends Empleado{
     // devuelve representación String de un objeto EmpleadoPorPiezas
     @Override
     public String toString(){
-        return "Empleado por piezas: \n" +
-                super.toString() + "\n" +
+        return super.toString() + "\n" +
                 "Piezas: " + obtenerPiezas() + "\n" +
                 "Pago por pieza: " + obtenerPagoPorPieza();
     }

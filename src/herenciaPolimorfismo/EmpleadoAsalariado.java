@@ -7,8 +7,13 @@ public class EmpleadoAsalariado extends Empleado {
     private double salarioSemanal;
 
     // constructor
-    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario, LocalDate localDate) {
-        super(nombre, apellido, fecNac, nss);
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double salario) {
+        super(nombre, apellido, fecNac, nss, categoria);
+        establecerSalarioSemanal(salario);
+    }
+
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double salario, LocalDate fecAlta) {
+        super(nombre, apellido, fecNac, nss, categoria, fecAlta);
         establecerSalarioSemanal(salario);
     }
 
@@ -35,8 +40,7 @@ public class EmpleadoAsalariado extends Empleado {
     // devuelve representación String de un objeto EmpleadoAsalariado
     @Override
     public String toString() {
-        return "Empleado asalariado: \n" +
-                super.toString() + "\n" +
+        return  super.toString() + "\n" +
                 "Salario semanal: " + obtenerSalarioSemanal();
     }
 

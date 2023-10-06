@@ -8,8 +8,8 @@ public class EmpleadoPorComision extends Empleado{
     protected double tarifaComision;
 
     // constructor
-    public EmpleadoPorComision(String nombre, String apellido, LocalDate fecNac, String nss, double ventas, double tarifa) {
-        super(nombre, apellido, fecNac, nss);
+    public EmpleadoPorComision(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double ventas, double tarifa) {
+        super(nombre, apellido, fecNac, nss, categoria);
         establecerVentasBrutas(ventas);
         establecerTarifaComision(tarifa);
     }
@@ -51,8 +51,7 @@ public class EmpleadoPorComision extends Empleado{
     // devuelve representación String de un objeto EmpleadoPorComision
     @Override
     public String toString() {
-        return "Empleado por comisión: \n" +
-                super.toString() + "\n" +
+        return  super.toString() + "\n" +
                 "Ventas brutas: " + obtenerVentasBrutas() + "\n" +
                 "Tarifa de comisión: " + obtenerTarifaComision();
     }

@@ -7,8 +7,8 @@ public class EmpleadoBaseComision extends EmpleadoPorComision{
     private double salarioBase;
 
     // constructor
-    public EmpleadoBaseComision(String nombre, String apellido, LocalDate fecNac, String nss, double ventas, double tarifa, double salario) {
-        super(nombre, apellido, fecNac, nss, ventas, tarifa);
+    public EmpleadoBaseComision(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double ventas, double tarifa, double salario) {
+        super(nombre, apellido, fecNac, nss, categoria, ventas, tarifa);
         establecerSalarioBase(salario);
     }
 
@@ -35,7 +35,7 @@ public void establecerSalarioBase(double salario) {
     // devuelve representación String de un objeto EmpleadoBaseComision
     @Override
     public String toString() {
-        return super.toString() + "\n" +
-        "Salario base: " + obtenerSalarioBase();
+        return  super.toString() + "\n" +
+                "Salario base: " + obtenerSalarioBase();
     }
 }

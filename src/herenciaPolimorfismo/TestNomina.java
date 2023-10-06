@@ -6,20 +6,34 @@ import java.util.ArrayList;
 public class TestNomina {
     public static void main(String[] args) {
         double montoTotal = 0;
-        EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("Juan", "Perez", LocalDate.of(1985,5,15), "111-11-1111", 800.00, LocalDate.of(2010, 1, 1));
-        EmpleadoPorHoras empleadoPorHoras = new EmpleadoPorHoras("Jorge", "Gonzalez", LocalDate.of(1990,3,20), "222-22-2222", 16, 40);
-        EmpleadoPorComision empleadoPorComision = new EmpleadoPorComision("Ana", "Lopez", LocalDate.of(1995,7,30), "333-33-3333", 10000, .06);
-        EmpleadoBaseComision empleadoBaseComision = new EmpleadoBaseComision("Luis", "Garcia", LocalDate.of(2000,2,2), "444-44-4444", 5000, .04, 300);
-        EmpleadoPorPiezas empleadoPorPiezas = new EmpleadoPorPiezas("Maria", "Martinez", LocalDate.of(2005,1,10), "555-55-5555", 100, 2.5);
 
+        //array de Categorias
+        Categoria[] categorias = new Categoria[6];
+        categorias[0] = new Categoria("Empleado Asalariado", "Empleado que recibe un salario fijo semanal");
+        categorias[1] = new Categoria("Empleado por Horas", "Empleado que recibe un pago por hora trabajada");
+        categorias[2] = new Categoria("Empleado por Comision", "Empleado que recibe un porcentaje de las ventas");
+        categorias[3] = new Categoria("Empleado Base Comision", "Empleado que recibe un porcentaje de las ventas y un salario base");
+        categorias[4] = new Categoria("Empleado por Piezas", "Empleado que recibe un pago por cada pieza producida");
+        categorias[5] = new Categoria("Empleado Permanente", "Empleado que recibe un pago por cada pieza producida y un salario base");
+
+        // crea objetos Empleado
+        EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("Juan", "Perez", LocalDate.of(1985, 5, 15), "111-11-1111", categorias[0],800.00, LocalDate.of(2010, 1, 1));
+        EmpleadoPorHoras empleadoPorHoras = new EmpleadoPorHoras("Jorge", "Gonzalez", LocalDate.of(1990, 3, 20), "222-22-2222", categorias[1], 16, 40);
+        EmpleadoPorComision empleadoPorComision = new EmpleadoPorComision("Ana", "Lopez", LocalDate.of(1995, 7, 30), "333-33-3333", categorias[2],10000, .06);
+        EmpleadoBaseComision empleadoBaseComision = new EmpleadoBaseComision("Luis", "Garcia", LocalDate.of(2000, 2, 2), "444-44-4444", categorias[3],5000, .04, 300);
+        EmpleadoPorPiezas empleadoPorPiezas = new EmpleadoPorPiezas("Maria", "Martinez", LocalDate.of(2005, 1, 10), "555-55-5555", categorias[4], 100, 2.5);
+        EmpleadoPermanente empleadoPermanente = new EmpleadoPermanente("Pedro", "Sanchez", LocalDate.of(2003, 12, 20), "666-66-6666", categorias[5], 100, 2.5, 1000);
+
+        // imprime los objetos Empleado
         System.out.println("Empleados procesados por separado:\n");
-
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoAsalariado, "Ingresos", empleadoAsalariado.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorHoras, "Ingresos", empleadoPorHoras.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorComision, "Ingresos", empleadoPorComision.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoBaseComision, "Ingresos", empleadoBaseComision.ingresos());
         System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorPiezas, "Ingresos", empleadoPorPiezas.ingresos());
+        System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPermanente, "Ingresos", empleadoPermanente.ingresos());
 
+        //agrega complementos
         empleadoPorPiezas.agregarComplemento(new ComplementoNocturnidad());
         empleadoPorHoras.agregarComplemento(new ComplementoProductividad());
         empleadoBaseComision.agregarComplemento(new ComplementoInsalubridad());
@@ -33,6 +47,7 @@ public class TestNomina {
         empleados.add(empleadoPorComision);
         empleados.add(empleadoBaseComision);
         empleados.add(empleadoPorPiezas);
+        empleados.add(empleadoPermanente);
 
         System.out.println("------------------------------------------");
         System.out.println("Empleados procesados en forma polimórfica:");
@@ -48,6 +63,9 @@ public class TestNomina {
         }
         System.out.printf("El monto total de la nomina es: $%,.2f\n", montoTotal);
         System.out.println("------------------------------------------");
+        System.out.printf("El sueldo promedio es: $%,.2f\n", Empleado.calcularSueldoPromedio(empleados));
+        System.out.println("------------------------------------------");
 
     }
+
 }

@@ -7,8 +7,8 @@ public class EmpleadoPorHoras extends Empleado {
     private double sueldo;
 
     // constructor
-    public EmpleadoPorHoras(String nombre, String apellido, LocalDate fecNac, String nss, int horas, double sueldo) {
-        super(nombre, apellido, fecNac, nss);
+    public EmpleadoPorHoras(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, int horas, double sueldo) {
+        super(nombre, apellido, fecNac, nss, categoria);
         establecerHoras(horas);
         establecerSueldo(sueldo);
     }
@@ -53,8 +53,7 @@ public class EmpleadoPorHoras extends Empleado {
     // devuelve representación String de un objeto EmpleadoAsalariado
     @Override
     public String toString() {
-        return "Empleado por horas: \n" +
-                super.toString() + "\n" +
+        return  super.toString() + "\n" +
                 "Horas trabajadas: " + obtenerHoras() + "\n" +
                 "Sueldo por hora: " + obtenerSueldo();
     }

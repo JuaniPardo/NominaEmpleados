@@ -11,26 +11,29 @@ public abstract class Empleado {
     protected String NSS; // número de seguro social no usado para calculos
     protected LocalDate fecNac;
     protected LocalDate fecAlta;
+    protected Categoria categoria;
 
     protected ArrayList<ComplementoSalarial> complementos;
 
     // constructor
-    public Empleado(String nombre, String apellido, LocalDate fecNac,String nss) {
+    public Empleado(String nombre, String apellido, LocalDate fecNac,String nss, Categoria categoria) {
         primerNombre = nombre;
         apellidoPaterno = apellido;
         NSS = nss;
         establecerFecNac(fecNac);
         establecerFecAlta(LocalDate.now());
+        this.categoria = categoria;
         this.complementos = new ArrayList<>();
         agregarComplemento(new ComplementoAntiguedad(fecAlta));
     }
 
-    public Empleado(String nombre, String apellido, LocalDate fecNac,String nss, LocalDate fecAlta) {
+    public Empleado(String nombre, String apellido, LocalDate fecNac,String nss, Categoria categoria,LocalDate fecAlta) {
         primerNombre = nombre;
         apellidoPaterno = apellido;
         NSS = nss;
         establecerFecNac(fecNac);
         establecerFecAlta(fecAlta);
+        this.categoria = categoria;
         this.complementos = new ArrayList<>();
         agregarComplemento(new ComplementoAntiguedad(fecAlta));
     }
@@ -107,19 +110,38 @@ public abstract class Empleado {
     public abstract double ingresos();
 
     public double ingresosComplementos(){
-        double ingresos = 0;
+        double comps = 0;
         for (ComplementoSalarial complemento : complementos) {
-            ingresos += complemento.obtenerMonto();
+            comps += complemento.obtenerMonto();
         }
-        return ingresos + 1;
+        return comps + 1; //los complementos se suman al 100% del sueldo
+    }
+
+    public static double calcularSueldoPromedio(ArrayList<Empleado> empleados){
+        double sueldoPromedio = 0;
+        for (Empleado empleado : empleados) {
+            sueldoPromedio += empleado.ingresos();
+        }
+        return sueldoPromedio / empleados.size();
+    }
+
+    public String imprimirComplementos(){
+        String complementos = "Complementos Salariales:";
+        for (ComplementoSalarial complemento : this.complementos) {
+            complementos += "\n\t" + complemento.toString();
+        }
+        return complementos;
     }
 
     // devuelve representación String de un objeto Empleado
     public String toString() {
-        return primerNombre + " " + apellidoPaterno + "\n" +
+        return  "Categoria: " + categoria.obtenerNombre() + "\n" +
+                primerNombre + " " + apellidoPaterno + "\n" +
                 "Edad: " + obtenerEdad() + "\n" +
                 "Fecha de nacimiento: " + fecNac + "\n" +
                 "Número de seguro social: " + NSS + "\n" +
-                "Fecha de alta: " + fecAlta;
+                "Fecha de alta: " + fecAlta + "\n" +
+                imprimirComplementos()
+                ;
     }
 }
