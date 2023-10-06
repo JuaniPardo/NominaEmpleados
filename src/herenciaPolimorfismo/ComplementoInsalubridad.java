@@ -10,4 +10,9 @@ public class ComplementoInsalubridad extends ComplementoSalarial {
     public double obtenerMonto() {
         return 0.25;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " - Monto (%): " + obtenerMonto()*100;
+    }
 }

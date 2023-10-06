@@ -14,7 +14,7 @@ public abstract class Empleado {
 
     protected ArrayList<ComplementoSalarial> complementos;
 
-    // constructor
+    // constructor sin fecha de alta
     public Empleado(String nombre, String apellido, LocalDate fecNac,String nss) {
         primerNombre = nombre;
         apellidoPaterno = apellido;
@@ -25,6 +25,7 @@ public abstract class Empleado {
         agregarComplemento(new ComplementoAntiguedad(fecAlta));
     }
 
+    // constructor con fecha de alta
     public Empleado(String nombre, String apellido, LocalDate fecNac,String nss, LocalDate fecAlta) {
         primerNombre = nombre;
         apellidoPaterno = apellido;
@@ -107,19 +108,29 @@ public abstract class Empleado {
     public abstract double ingresos();
 
     public double ingresosComplementos(){
-        double ingresos = 0;
+        double comps = 0;
         for (ComplementoSalarial complemento : complementos) {
-            ingresos += complemento.obtenerMonto();
+            comps += complemento.obtenerMonto();
         }
-        return ingresos + 1;
+        return comps + 1; //se calcula sobre el 100% del salario (+1)
     }
 
-    // devuelve representación String de un objeto Empleado
+    public String imprimirComplementos(){
+        String comps = "Complementos Salariales:";
+        for (ComplementoSalarial complemento : complementos) {
+            comps += "\n\t" + complemento.toString();
+        }
+        return comps;
+    }
+
+    @Override
     public String toString() {
         return primerNombre + " " + apellidoPaterno + "\n" +
                 "Edad: " + obtenerEdad() + "\n" +
                 "Fecha de nacimiento: " + fecNac + "\n" +
                 "Número de seguro social: " + NSS + "\n" +
-                "Fecha de alta: " + fecAlta;
+                "Fecha de alta: " + fecAlta + "\n" +
+                imprimirComplementos()
+                ;
     }
 }

@@ -10,7 +10,7 @@ public class TestNomina {
         EmpleadoPorHoras empleadoPorHoras = new EmpleadoPorHoras("Jorge", "Gonzalez", LocalDate.of(1990,3,20), "222-22-2222", 16, 40);
         EmpleadoPorComision empleadoPorComision = new EmpleadoPorComision("Ana", "Lopez", LocalDate.of(1995,7,30), "333-33-3333", 10000, .06);
         EmpleadoBaseComision empleadoBaseComision = new EmpleadoBaseComision("Luis", "Garcia", LocalDate.of(2000,2,2), "444-44-4444", 5000, .04, 300);
-        EmpleadoPorPiezas empleadoPorPiezas = new EmpleadoPorPiezas("Maria", "Martinez", LocalDate.of(2005,1,10), "555-55-5555", 100, 2.5);
+        EmpleadoPorPiezas empleadoPorPiezas = new EmpleadoPorPiezas("Maria", "Martinez", LocalDate.of(1985,1,10), "555-55-5555", 100, 2.5, LocalDate.of(2015, 1, 1));
 
         System.out.println("Empleados procesados por separado:\n");
 

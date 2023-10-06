@@ -7,9 +7,16 @@ public class EmpleadoPorPiezas extends Empleado{
     private int piezas;
     private double pagoPorPieza;
 
-    // constructor
+    // constructor sin fecha de alta
     public EmpleadoPorPiezas(String nombre, String apellido, LocalDate fecNac, String nss, int piezas, double pagoPorPieza){
         super(nombre, apellido, fecNac, nss);
+        establecerPiezas(piezas);
+        establecerPagoPorPieza(pagoPorPieza);
+    }
+
+    // constructor con fecha de alta
+    public EmpleadoPorPiezas(String nombre, String apellido, LocalDate fecNac, String nss, int piezas, double pagoPorPieza, LocalDate fecAlta){
+        super(nombre, apellido, fecNac, nss, fecAlta);
         establecerPiezas(piezas);
         establecerPagoPorPieza(pagoPorPieza);
     }

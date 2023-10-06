@@ -8,7 +8,10 @@ public class ComplementoAntiguedad extends ComplementoSalarial {
         public ComplementoAntiguedad(LocalDate fecAlta){
             super("Antigüedad", "Complemento por antigüedad");
             establecerfecAlta(fecAlta);
+        }
 
+        public int obtenerAntiguedad(){
+            return Period.between(fecAlta, LocalDate.now()).getYears();
         }
 
         public void establecerfecAlta(LocalDate fecAlta){
@@ -17,11 +20,12 @@ public class ComplementoAntiguedad extends ComplementoSalarial {
 
         @Override
         public double obtenerMonto() {
-            int antiguedad = Period.between(fecAlta, LocalDate.now()).getYears();
-            return antiguedad * 0.1;
+            int antiguedad = obtenerAntiguedad();
+            return antiguedad * 0.01;
         }
 
+        @Override
         public String toString(){
-            return super.toString() + " - Monto: " + obtenerMonto() + "\n";
+            return super.toString() + " - " + obtenerAntiguedad() + " años - Monto (%): " + obtenerMonto()*100;
         }
 }

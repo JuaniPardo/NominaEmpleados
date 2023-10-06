@@ -6,8 +6,14 @@ public class EmpleadoAsalariado extends Empleado {
 
     private double salarioSemanal;
 
-    // constructor
-    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario, LocalDate localDate) {
+    // constructor con fecha de alta
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario, LocalDate fecAlta) {
+        super(nombre, apellido, fecNac, nss, fecAlta);
+        establecerSalarioSemanal(salario);
+    }
+
+    // constructor sin fecha de alta
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, double salario) {
         super(nombre, apellido, fecNac, nss);
         establecerSalarioSemanal(salario);
     }

@@ -12,6 +12,7 @@ public abstract class ComplementoSalarial {
     public abstract double obtenerMonto();
 
 
+    @Override
     public String toString(){
         return "Nombre: " + nombre;
 

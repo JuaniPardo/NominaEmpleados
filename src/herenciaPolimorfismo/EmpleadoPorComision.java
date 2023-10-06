@@ -7,9 +7,16 @@ public class EmpleadoPorComision extends Empleado{
     protected double ventasBrutas;
     protected double tarifaComision;
 
-    // constructor
+    // constructor sin fecha de alta
     public EmpleadoPorComision(String nombre, String apellido, LocalDate fecNac, String nss, double ventas, double tarifa) {
         super(nombre, apellido, fecNac, nss);
+        establecerVentasBrutas(ventas);
+        establecerTarifaComision(tarifa);
+    }
+
+    // constructor con fecha de alta
+    public EmpleadoPorComision(String nombre, String apellido, LocalDate fecNac, String nss, LocalDate fecAlta, double ventas, double tarifa) {
+        super(nombre, apellido, fecNac, nss, fecAlta);
         establecerVentasBrutas(ventas);
         establecerTarifaComision(tarifa);
     }

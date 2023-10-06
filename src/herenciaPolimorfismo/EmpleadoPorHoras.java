@@ -6,9 +6,16 @@ public class EmpleadoPorHoras extends Empleado {
     private int horas;
     private double sueldo;
 
-    // constructor
+    // constructor sin fecha de alta
     public EmpleadoPorHoras(String nombre, String apellido, LocalDate fecNac, String nss, int horas, double sueldo) {
         super(nombre, apellido, fecNac, nss);
+        establecerHoras(horas);
+        establecerSueldo(sueldo);
+    }
+
+    // constructor con fecha de alta
+    public EmpleadoPorHoras(String nombre, String apellido, LocalDate fecNac, String nss, int horas, double sueldo, LocalDate fecAlta) {
+        super(nombre, apellido, fecNac, nss, fecAlta);
         establecerHoras(horas);
         establecerSueldo(sueldo);
     }
