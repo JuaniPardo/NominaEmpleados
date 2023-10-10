@@ -1,4 +1,4 @@
-package herenciaPolimorfismo;
+package herenciaPolimorfismo.complementosSalariales;
 
 import java.time.LocalDate;
 import java.time.Period;

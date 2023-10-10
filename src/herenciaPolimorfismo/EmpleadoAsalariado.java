@@ -7,13 +7,13 @@ public class EmpleadoAsalariado extends Empleado {
     private double salarioSemanal;
 
     // constructor
-    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double salario) {
-        super(nombre, apellido, fecNac, nss, categoria);
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, Departamento departamento, double salario) {
+        super(nombre, apellido, fecNac, nss, categoria, departamento);
         establecerSalarioSemanal(salario);
     }
 
-    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double salario, LocalDate fecAlta) {
-        super(nombre, apellido, fecNac, nss, categoria, fecAlta);
+    public EmpleadoAsalariado(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, Departamento departamento, double salario, LocalDate fecAlta) {
+        super(nombre, apellido, fecNac, nss, categoria, departamento, fecAlta);
         establecerSalarioSemanal(salario);
     }
 

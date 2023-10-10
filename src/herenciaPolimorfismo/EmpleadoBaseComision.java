@@ -7,8 +7,13 @@ public class EmpleadoBaseComision extends EmpleadoPorComision{
     private double salarioBase;
 
     // constructor
-    public EmpleadoBaseComision(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, double ventas, double tarifa, double salario) {
-        super(nombre, apellido, fecNac, nss, categoria, ventas, tarifa);
+    public EmpleadoBaseComision(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, Departamento departamento, double ventas, double tarifa, double salario) {
+        super(nombre, apellido, fecNac, nss, categoria, departamento, ventas, tarifa);
+        establecerSalarioBase(salario);
+    }
+
+    public EmpleadoBaseComision(String nombre, String apellido, LocalDate fecNac, String nss, Categoria categoria, Departamento departamento, double ventas, double tarifa, double salario, LocalDate fecAlta) {
+        super(nombre, apellido, fecNac, nss, categoria, departamento, ventas, tarifa, fecAlta);
         establecerSalarioBase(salario);
     }
 

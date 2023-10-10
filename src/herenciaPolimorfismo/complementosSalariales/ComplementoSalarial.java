@@ -1,8 +1,8 @@
-package herenciaPolimorfismo;
+package herenciaPolimorfismo.complementosSalariales;
 
 public abstract class ComplementoSalarial {
-    protected String nombre;
-    protected String descripcion;
+    protected final String nombre;
+    protected final String descripcion;
 
     public ComplementoSalarial(String nombre, String descripcion){
         this.nombre = nombre;

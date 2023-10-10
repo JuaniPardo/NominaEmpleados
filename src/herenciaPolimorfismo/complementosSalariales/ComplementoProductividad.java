@@ -1,4 +1,4 @@
-package herenciaPolimorfismo;
+package herenciaPolimorfismo.complementosSalariales;
 
 public class ComplementoProductividad extends ComplementoSalarial {
 

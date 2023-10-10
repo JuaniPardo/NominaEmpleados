@@ -10,12 +10,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
+    public String obtenerNombre() {
+        return nombre;
+    }
 
     public String toString(){
         return "Categoría: " + nombre;
-    }
-
-    public String obtenerNombre() {
-        return nombre;
     }
 }
